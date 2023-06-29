@@ -5,8 +5,8 @@
     margin: 0;
     padding: 0;
 }
-
-.container {
+    
+body {
     background-color: black;
     font-family: 'Oswald', sans-serif;
     font-size: 350px;
