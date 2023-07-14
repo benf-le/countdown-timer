@@ -35,9 +35,9 @@ body.prevent-sleep #countdown {
     display: none;
 }
 
-.hidden {
-    display: none !important;
-}
+/*.hidden {*/
+/*    display: none !important;*/
+/*}*/
 
 #inputContainer {
     display: flex;
