@@ -30,14 +30,14 @@ body {
     display: block;
 }
 
-/* Ẩn đồng hồ đếm ngược trong quá trình ngăn chặn chế độ nghỉ */
-body.prevent-sleep #countdown {
-    display: none;
-}
-
-/*.hidden {*/
-/*    display: none !important;*/
+/*!* Ẩn đồng hồ đếm ngược trong quá trình ngăn chặn chế độ nghỉ *!*/
+/*body.prevent-sleep #countdown {*/
+/*    display: none;*/
 /*}*/
+
+.hidden {
+    display: none !important;
+}
 
 #inputContainer {
     display: flex;

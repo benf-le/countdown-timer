@@ -45,7 +45,7 @@ function startCountdown() {
 
     // Bật chức năng toàn màn hình khi đếm ngược
     toggleFullscreen();
-    keepAliveInterval();
+
 
 
     countdown = setInterval(function() {
