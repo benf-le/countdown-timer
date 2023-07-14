@@ -25,6 +25,16 @@ body {
     animation: preventSleep infinite;/* Ngăn chặn chế độ nghỉ cho toàn bộ trang */
 }
 
+/* Hiển thị đồng hồ đếm ngược */
+#countdown {
+    display: block;
+}
+
+/* Ẩn đồng hồ đếm ngược trong quá trình ngăn chặn chế độ nghỉ */
+body.prevent-sleep #countdown {
+    display: none;
+}
+
 .hidden {
     display: none !important;
 }
