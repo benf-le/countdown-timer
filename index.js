@@ -1,6 +1,19 @@
 var countdown;
 var countDownDate;
 
+// bật toàn màn hình
+function toggleFullscreen() {
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+        document.documentElement.mozRequestFullScreen();
+    } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+        document.documentElement.msRequestFullscreen();
+    }
+}
+
 function startCountdown() {
     var hoursInput = document.getElementById("hoursInput").value;
     var minutesInput = document.getElementById("minutesInput").value;
@@ -27,6 +40,12 @@ function startCountdown() {
 
     countDownDate = new Date().getTime() + (totalSeconds * 1000);
 
+
+    // Bật chức năng toàn màn hình khi đếm ngược
+    toggleFullscreen();
+
+
+
     countdown = setInterval(function() {
         var now = new Date().getTime();
         var distance = countDownDate - now;
@@ -48,4 +67,28 @@ function startCountdown() {
 
         }
     }, 1000);
+
+    // Tạo một tệp JSON trống để giữ kết nối không hoạt động
+    var keepAliveData = {};
+
+// Gửi yêu cầu Keep-Alive: giữ màn hình luôn sáng, không bị tắt khi đếm
+    function sendKeepAlive() {
+        fetch('keepalive.json', {
+            method: 'POST',
+            body: JSON.stringify(keepAliveData)
+        })
+            .then(function(response) {
+                if (response.ok) {
+                    console.log('Yêu cầu Keep-Alive thành công.');
+                } else {
+                    console.log('Yêu cầu Keep-Alive thất bại.');
+                }
+            })
+            .catch(function(error) {
+                console.log('Lỗi khi gửi yêu cầu Keep-Alive: ', error);
+            });
+    }
+
+// Gọi sendKeepAlive mỗi 15 giây
+    setInterval(sendKeepAlive, 15000);
 }
