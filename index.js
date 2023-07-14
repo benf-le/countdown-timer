@@ -77,28 +77,4 @@ function startCountdown() {
 
         }
     }, 1000);
-
-
-
-
-// // Gửi yêu cầu Keep-Alive: giữ màn hình luôn sáng, không bị tắt khi đếm
-//     function sendKeepAlive() {
-//         fetch('keepalive.json', {
-//             method: 'POST',
-//             body: JSON.stringify(keepAliveData)
-//         })
-//             .then(function(response) {
-//                 if (response.ok) {
-//                     console.log('Yêu cầu Keep-Alive thành công.');
-//                 } else {
-//                     console.log('Yêu cầu Keep-Alive thất bại.');
-//                 }
-//             })
-//             .catch(function(error) {
-//                 console.log('Lỗi khi gửi yêu cầu Keep-Alive: ', error);
-//             });
-//     }
-//
-// // Gọi sendKeepAlive mỗi 15 giây
-//     function keepAliveInterval() {setInterval(sendKeepAlive, 15000);}
 }
