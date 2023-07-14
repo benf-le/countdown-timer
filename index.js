@@ -58,7 +58,15 @@ function startCountdown() {
         minutes = minutes < 0 ? 0 : minutes;
         seconds = seconds < 0 ? 0 : seconds;
 
+        
         document.getElementById("countdown").innerHTML = hours + ":" + minutes + ":" + seconds  ;
+
+        // format Time = hh:mm:ss
+        // var formattedTime = (hours < 10 ? "0" + hours : hours) + ":" +
+        //     (minutes < 10 ? "0" + minutes : minutes) + ":" +
+        //     (seconds < 10 ? "0" + seconds : seconds);
+
+        // document.getElementById("countdown").innerHTML = formattedTime  ;
 
         if (distance < 0) {
             clearInterval(countdown);
