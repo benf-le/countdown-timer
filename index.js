@@ -45,7 +45,7 @@ function startCountdown() {
 
     // Bật chức năng toàn màn hình khi đếm ngược
     toggleFullscreen();
-
+    keepAliveInterval();
 
 
     countdown = setInterval(function() {
@@ -100,5 +100,5 @@ function startCountdown() {
     }
 
 // Gọi sendKeepAlive mỗi 15 giây
-    setInterval(sendKeepAlive, 15000);
+    function keepAliveInterval() {setInterval(sendKeepAlive, 15000);}
 }
