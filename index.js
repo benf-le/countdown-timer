@@ -81,24 +81,44 @@ function startCountdown() {
     // Tạo một tệp JSON trống để giữ kết nối không hoạt động
     var keepAliveData = {};
 
-// Gửi yêu cầu Keep-Alive: giữ màn hình luôn sáng, không bị tắt khi đếm
-    function sendKeepAlive() {
-        fetch('keepalive.json', {
-            method: 'POST',
-            body: JSON.stringify(keepAliveData)
-        })
-            .then(function(response) {
-                if (response.ok) {
-                    console.log('Yêu cầu Keep-Alive thành công.');
-                } else {
-                    console.log('Yêu cầu Keep-Alive thất bại.');
-                }
+    function keepAliveInterval() {
+        // Gửi yêu cầu AJAX hoặc Fetch API đến server của bạn sau một khoảng thời gian nhất định
+        // Điều này giữ cho kết nối sống khi đang đếm ngược và ngăn chặn màn hình điện thoại, tablet, laptop vào chế độ nghỉ
+
+        // Sử dụng Fetch API
+        setInterval(function() {
+            fetch('/keep-alive', {
+                method: 'GET'
             })
-            .catch(function(error) {
-                console.log('Lỗi khi gửi yêu cầu Keep-Alive: ', error);
-            });
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error('Lỗi gửi yêu cầu keep-alive');
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }, 15000); // Gửi yêu cầu sau mỗi 15 giây
     }
 
-// Gọi sendKeepAlive mỗi 15 giây
-    function keepAliveInterval() {setInterval(sendKeepAlive, 15000);}
+// // Gửi yêu cầu Keep-Alive: giữ màn hình luôn sáng, không bị tắt khi đếm
+//     function sendKeepAlive() {
+//         fetch('keepalive.json', {
+//             method: 'POST',
+//             body: JSON.stringify(keepAliveData)
+//         })
+//             .then(function(response) {
+//                 if (response.ok) {
+//                     console.log('Yêu cầu Keep-Alive thành công.');
+//                 } else {
+//                     console.log('Yêu cầu Keep-Alive thất bại.');
+//                 }
+//             })
+//             .catch(function(error) {
+//                 console.log('Lỗi khi gửi yêu cầu Keep-Alive: ', error);
+//             });
+//     }
+//
+// // Gọi sendKeepAlive mỗi 15 giây
+//     function keepAliveInterval() {setInterval(sendKeepAlive, 15000);}
 }
