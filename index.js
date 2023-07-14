@@ -41,6 +41,8 @@ function startCountdown() {
     countDownDate = new Date().getTime() + (totalSeconds * 1000);
 
 
+    alert("Nên đặt ngang màn hình để có trải nghiệm tốt nhất! Xin cảm ơn");
+
     // Bật chức năng toàn màn hình khi đếm ngược
     toggleFullscreen();
 
@@ -58,7 +60,7 @@ function startCountdown() {
         minutes = minutes < 0 ? 0 : minutes;
         seconds = seconds < 0 ? 0 : seconds;
 
-        
+
         document.getElementById("countdown").innerHTML = hours + ":" + minutes + ":" + seconds  ;
 
         // format Time = hh:mm:ss
