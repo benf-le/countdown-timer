@@ -6,6 +6,13 @@
     padding: 0;
 }
 
+
+/* Khi mở trang web, ngăn chặn rơi vào chế độ nghỉ */
+@keyframes preventSleep {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 body {
     background-color: black;
     font-family: 'Oswald', sans-serif;
@@ -15,6 +22,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    animation: preventSleep infinite;/* Ngăn chặn chế độ nghỉ cho toàn bộ trang */
 }
 
 .hidden {

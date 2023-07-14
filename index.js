@@ -78,28 +78,8 @@ function startCountdown() {
         }
     }, 1000);
 
-    // Tạo một tệp JSON trống để giữ kết nối không hoạt động
-    var keepAliveData = {};
 
-    function keepAliveInterval() {
-        // Gửi yêu cầu AJAX hoặc Fetch API đến server của bạn sau một khoảng thời gian nhất định
-        // Điều này giữ cho kết nối sống khi đang đếm ngược và ngăn chặn màn hình điện thoại, tablet, laptop vào chế độ nghỉ
 
-        // Sử dụng Fetch API
-        setInterval(function() {
-            fetch('/keep-alive', {
-                method: 'GET'
-            })
-                .then(function(response) {
-                    if (!response.ok) {
-                        throw new Error('Lỗi gửi yêu cầu keep-alive');
-                    }
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
-        }, 15000); // Gửi yêu cầu sau mỗi 15 giây
-    }
 
 // // Gửi yêu cầu Keep-Alive: giữ màn hình luôn sáng, không bị tắt khi đếm
 //     function sendKeepAlive() {
